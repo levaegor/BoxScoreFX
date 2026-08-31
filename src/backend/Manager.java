@@ -28,6 +28,15 @@ public class Manager {
         initPlayers();
     }
 
+    public static List<Match> getMatches() {
+        List<Match> matches = new ArrayList<Match>();
+        for (Day day: Manager.schedule) {
+            matches.addAll(day.getMatches());
+
+        }
+        return matches;
+    }
+
     public static void initPlayers() {
         for (Team team : getTeams()) {
             List<Integer> jerseyNumbers = new ArrayList<Integer>();
@@ -44,7 +53,7 @@ public class Manager {
 
 
     public static ArrayList<Day> initSchedule() {
-        LocalDate startDate = LocalDate.of(2025, Month.FEBRUARY, 25); //22.10.2024
+        LocalDate startDate = LocalDate.of(2024, Month.OCTOBER, 22); //22.10.2024
         LocalDate today = LocalDate.now();
         ArrayList<Day> schedule = new ArrayList<Day>();
         for (LocalDate d = startDate; d.isBefore(today); d = d.plusDays(1)) {
@@ -61,17 +70,6 @@ public class Manager {
                 shuffledTeams.remove(0); //Java 8 :)
                 shuffledTeams.remove(0);
 
-//                for (PlayerStats playerStats: match.playerStats1) {
-//                    System.out.println("\n" + playerStats.getPlayer().getJerseyNumber() + " " + playerStats.getPlayer().getTeam().getName()
-//                            + " scored:" + playerStats.getPoints());
-//                }
-//                System.out.println(match.getTeam1().getName() + " scored" + match.stats1.getPoints());
-//
-//                for (PlayerStats playerStats: match.playerStats2) {
-//                    System.out.println("\n" + playerStats.getPlayer().getJerseyNumber() + " " + playerStats.getPlayer().getTeam().getName()
-//                            + " scored:" + playerStats.getPoints());
-//                }
-//                System.out.println(match.getTeam2().getName() + " scored" + match.stats2.getPoints());
             }
             schedule.add(gameDay);
         }

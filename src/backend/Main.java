@@ -6,9 +6,11 @@ import java.util.ArrayList;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static ArrayList<Day> schedule;
-    public static void main(String[] args) {
+    public static void initAll() {
         Manager.initTeams();
-        schedule = Manager.initSchedule();
-
+        Manager.schedule = Manager.initSchedule();
+    }
+    public static void main(String[] args) {
+        initAll();
     }
 }
